@@ -41,7 +41,7 @@ legoData.initialize()
           if (set) {
             res.json(set);
           } else {
-            res.status(404).send('Set not found');
+            res.status(404).send(err);
           }
         })
         .catch(err => res.status(500).send(err));
