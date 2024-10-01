@@ -12,6 +12,7 @@
 * Published URL: ___________________________________________________________
 *
 ********************************************************************************/
+
 const express = require('express');
 const legoData = require('./modules/legoSets');
 
@@ -33,20 +34,35 @@ legoData.initialize()
         .catch(err => res.status(500).send(err));
     });
 
-
     app.get('/lego/sets/num-demo', (req, res) => {
-      legoData.getSetByNum('1-Mar') 
-        .then(set => res.json(set))
-        .catch(err => res.status(404).send(err));
-    });
-
-    app.get('/lego/sets/theme-demo', (req, res) => {
-      legoData.getSetsByTheme('Town') 
-        .then(sets => res.json(sets))
-        .catch(err => res.status(404).send(err));
+      legoData.getAllSets()
+        .then(sets => {
+          const set = sets.find(s => s.set_num === '1-Mar'); 
+          if (set) {
+            res.json(set);
+          } else {
+            res.status(404).send('Set not found');
+          }
+        })
+        .catch(err => res.status(500).send(err));
     });
 
     
+    app.get('/lego/sets/theme-demo', (req, res) => {
+      legoData.getAllSets()
+        .then(sets => {
+          const filteredSets = sets.filter(s => 
+            s.theme.toLowerCase().includes('town'.toLowerCase()) 
+          );
+          if (filteredSets.length > 0) {
+            res.json(filteredSets);
+          } else {
+            res.status(404).send(err);
+          }
+        })
+        .catch(err => res.status(500).send(err));
+    });
+
     app.listen(PORT, () => {
       console.log(`Server running on port ${PORT}`);
     });
