@@ -7,7 +7,7 @@
 *
 * https://www.senecacollege.ca/about/policies/academic-integrity-policy.html
 *
-* Name: __Rahul Subedi_____ Student ID: ___151355229____ Date: ___15-10-2024___
+* Name: __Rahul Subedi_____ Student ID: ____151355229____ Date: ___15-10-2024___
 *
 * Published URL: _________________________________________________________
 *
