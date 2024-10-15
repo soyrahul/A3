@@ -7,7 +7,7 @@
 *
 * https://www.senecacollege.ca/about/policies/academic-integrity-policy.html
 *
-* Name: __Rahul Subedi_____ Student ID: ____151355229____ Date: ___15-10-2024___
+* Name: ___Rahul Subedi_____ Student ID: ____151355229____ Date: ___15-10-2024___
 *
 * Published URL: _________________________________________________________
 *
@@ -66,7 +66,7 @@ app.get('/lego/sets', (req, res) => {
       legoData.getAllSets()
         .then(sets => {
           const set = sets.find(s => s.set_num === setNum);
-          if (set) {
+          if (set) {w
             res.json(set);
           } else {
             res.status(404).send(`No set found with set number: ${setNum}`);
